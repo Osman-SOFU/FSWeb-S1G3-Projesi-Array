@@ -40,8 +40,8 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
 */
 
 
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
+function kopyala(orijinalTatlar){
+  return [...orijinalTatlar];
 }
 
 
@@ -56,8 +56,12 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 */
 
 
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function dizi25Cesitmi(kopya){
+  if(kopya.length === 25 ){
+    return true
+  }else {
+    return false
+  }
 }
 
 
@@ -74,8 +78,10 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
 */
 
 
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
+function cesitEkle(orijinalTatlar, yeni){
+  const yeniDizi = [...orijinalTatlar];
+  yeniDizi.unshift(yeni);
+  return yeniDizi
 }
 
 
@@ -92,8 +98,10 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
 */
 
 
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(orijinalTatlar){
+  const yeniDizi = [...orijinalTatlar];
+  yeniDizi.pop();
+  return yeniDizi
 }
 
 
@@ -108,8 +116,8 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(orijinalTatlar, sayi){
+  return orijinalTatlar[sayi]
 }
 
 
@@ -128,8 +136,11 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
 
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreCesitCikar(orijinalTatlar, lezzet){
+  const yeniDizi = [...orijinalTatlar];
+  const index = orijinalTatlar.indexOf(lezzet)
+  yeniDizi.splice(index, 1);
+  return yeniDizi;
 }
 
 
@@ -154,8 +165,8 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 */
 
 
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreFiltrele(orijinalTatlar, lezzet){
+  return orijinalTatlar.filter(tat => tat.includes(lezzet));
 }
 
 
@@ -172,8 +183,15 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
 
-function ortalamaKelimeSayisi(/*kod buraya*/){
-  /*kod buraya*/
+function ortalamaKelimeSayisi(orijinalTatlar){
+  let toplamKelimeSayisi = 0;
+  orijinalTatlar.forEach(ogee => {
+    const kelimeler = ogee.trim().split(/\s+/);
+    toplamKelimeSayisi += kelimeler.length; 
+  });
+  const diziUzunlugu = orijinalTatlar.length;
+  const ortalama = toplamKelimeSayisi / diziUzunlugu ;
+  return ortalama;
 }
 
 
@@ -190,8 +208,12 @@ Aşağıdakileri yapmak için rastgeleTatlar işlevini ve yeni dizileri kullanı
 */
 
 
-function rastgeleTatlar(/*kod buraya*/){
-  /*kod buraya*/
+function rastgeleTatlar(orijinalTatlar, yeniTatlar, mevsimlikTatlar, bolgeselTatlar){
+const rastgeleOrijinal  = orijinalTatlar[Math.floor(Math.random() * orijinalTatlar.length)];
+const rastgeleYeni  = yeniTatlar[Math.floor(Math.random() * yeniTatlar.length)];
+const rastgeleMevsimlik = mevsimlikTatlar[Math.floor(Math.random() * mevsimlikTatlar.length)];
+const rastgeleBolgesel = bolgeselTatlar[Math.floor(Math.random() * bolgeselTatlar.length)];
+return (rastgeleOrijinal, rastgeleYeni, rastgeleMevsimlik, rastgeleBolgesel);
 }
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
